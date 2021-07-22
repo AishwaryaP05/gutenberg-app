@@ -1,0 +1,17 @@
+$primary-color: #5e56e7;
+$secondary-color: #f8f7ff;
+$color-grey-high: #333333;
+$color-grey-med: #a0a0a0;
+$color-grey-low: #f0f0f6;
+
+@font-face {
+  font-family: "Montserrat SemiBold";
+  src: local("Montserrat-SemiBold"),
+    url(/src/Assets/fonts/Montserrat-SemiBold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat Regular";
+  src: local("Montserrat-Regular"),
+    url(/src/Assets/fonts/Montserrat-Regular.ttf) format("truetype");
+}

@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./Assets/styles/main.css";
+import CategoryList from "./Components/CategoryList";
+import BookList from "./Components/BookList";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BOOKS_GENRE } from "./config";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+          {BOOKS_GENRE &&
+            BOOKS_GENRE.map((genre) => {
+              return (
+                <Route key={genre} path={`/${genre}`}>
+                  <BookList genre={genre} />
+                </Route>
+              );
+            })}
+          <Route path="/">
+            <CategoryList />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

@@ -1,0 +1,92 @@
+@import "_var.scss";
+
+.heading-main {
+  font-family: "Montserrat SemiBold";
+  font-size: 48px;
+  color: $primary-color;
+}
+.pattern {
+  background-image: url(/src/Assets/images/Pattern.svg);
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.txt-box {
+  background-color: $color-grey-low;
+  border-color: $color-grey-low;
+  border-radius: 4px;
+  padding: 10px;
+  height: 40px;
+}
+.Mui-focused {
+  border-color: $primary-color !important;
+}
+
+.sub-heading {
+  font-family: "Montserrat SemiBold";
+  font-size: 30px;
+  color: $primary-color;
+}
+.free-text {
+  font-family: "Montserrat SemiBold";
+  font-size: 16px;
+  color: $color-grey-high;
+}
+
+.full-height {
+  height: 100vh;
+  min-height: 100vh;
+}
+.bg-grey {
+  background-color: $secondary-color;
+}
+.genre-card {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  font-family: "Montserrat SemiBold";
+  padding: 12.5px 10px;
+  font-size: 20px;
+  box-shadow: 0 2px 5px 0 rgba(211, 209, 238, 0.5);
+  background: #fff;
+}
+.side-icons {
+  // flex-grow: 1;
+  height: 25px;
+}
+.genre-name {
+  flex-grow: 1;
+  margin-left: 1rem;
+}
+.book-cover {
+  height: 162px;
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(211, 209, 238, 0.5);
+}
+.book-card {
+  padding: 15px;
+}
+.book-name {
+  font-family: "Montserrat SemiBold";
+  font-size: 12px;
+  color: $color-grey-high;
+  text-transform: uppercase;
+}
+.book-author {
+  font-family: "Montserrat SemiBold";
+  font-size: 12px;
+  color: $color-grey-med;
+}
+@media screen and (max-width: 500px) {
+  .genre-name {
+    display: block;
+  }
+  .full-height {
+    height: 100%;
+    min-height: 100%;
+  }
+}
