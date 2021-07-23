@@ -137,45 +137,50 @@ const BookList = (props) => {
           </FormControl>
         </Container>
       </Box>
-      <Box key="box2" pt={2} pb={2} className="bg-grey">
-        <Container maxWidth={"md"}>
-          <Box component={Grid} container>
-            {bookData &&
-              bookData.map((book, index) => {
-                return <BookCard key={Math.random() + index} {...book} />;
-              })}
-            {isNextPage && (
-              <Waypoint onEnter={loadNextData} bottomOffset="-200px">
-                <Box component={Grid} item xs={12} key="spinner" lg={12}>
-                  <div key={Math.random()} className={classes.root}>
-                    {!open ? <CircularProgress /> : null}
-                  </div>
-                </Box>
-              </Waypoint>
-            )}
-          </Box>
-        </Container>
-      </Box>
+      {!open ? (
+        <Box key="box2" pt={2} pb={2} className="bg-grey">
+          <Container maxWidth={"md"}>
+            <Box component={Grid} container>
+              {bookData &&
+                bookData.map((book, index) => {
+                  return <BookCard key={Math.random() + index} {...book} />;
+                })}
+              {isNextPage && (
+                <Waypoint onEnter={loadNextData} bottomOffset="-200px">
+                  <Box component={Grid} item xs={12} key="spinner" lg={12}>
+                    <div key={Math.random()} className={classes.root}>
+                      {!open ? <CircularProgress /> : null}
+                    </div>
+                  </Box>
+                </Waypoint>
+              )}
+            </Box>
+          </Container>
+        </Box>
+      ) : null}
     </>
   );
 };
 
 const BookCard = ({ formats, authors, subject, title }) => {
   const handleNewTab = (urls) => {
-    var href = "";
     var mediaType = ["text/html", "application/pdf", "text/plain"];
+    var acceptedFiles = ["htm", "html", "txt", "pdf"];
     var hrefArr = mediaType.map((fileType) => {
-      href = findValueByPrefix(urls, fileType);
-      var isZip = href
-        ? href.split(".")[href.split(".").length - 1] === "zip"
-        : false;
-      return !isZip ? href : "";
+      return findValueByPrefix(urls, fileType, true);
     });
-    if (hrefArr.some((href) => href && href !== "")) {
+    if (hrefArr.some((href) => href && href.length > 0)) {
       for (let redirect of hrefArr) {
-        if (redirect && redirect !== "") {
-          window.open(redirect, "_blank");
-          return;
+        let isRedirected = false;
+        if (redirect && redirect.length > 0) {
+          redirect.forEach((link, indx) => {
+            let ext = link.split(".")[link.split(".").length - 1];
+            if (ext !== "zip" && acceptedFiles.includes(ext)) {
+              window.open(redirect[indx], "_blank");
+              isRedirected = true;
+            }
+          });
+          if (isRedirected) return;
         }
       }
     } else {
@@ -187,8 +192,8 @@ const BookCard = ({ formats, authors, subject, title }) => {
       <div className="book-card" onClick={() => handleNewTab(formats)}>
         <img
           className="book-cover"
-          src={findValueByPrefix(formats, "image")}
-          alt="bookcover"
+          src={findValueByPrefix(formats, "image/jpeg")}
+          alt={title}
         ></img>
         <div className="book-name">{title}</div>
         <div className="book-author">

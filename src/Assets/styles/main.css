@@ -56,6 +56,7 @@
 }
 
 .genre-card {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,6 +84,7 @@
 }
 
 .book-cover {
+  min-height: 162px;
   height: 162px;
   max-width: 100%;
   min-width: 100%;
@@ -93,7 +95,8 @@
 }
 
 .book-card {
-  padding: 15px;
+  margin: 15px;
+  cursor: pointer;
 }
 
 .book-name {

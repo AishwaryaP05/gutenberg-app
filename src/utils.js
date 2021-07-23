@@ -10,4 +10,5 @@ export const findValueByPrefix = (object, prefix, multiple) => {
       } else return object[property];
     }
   }
+  return returnArr;
 };

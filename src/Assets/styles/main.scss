@@ -42,6 +42,7 @@
   background-color: $secondary-color;
 }
 .genre-card {
+  cursor: pointer;
   display: flex;
   align-items: center;
   border-radius: 4px;
@@ -60,6 +61,7 @@
   margin-left: 1rem;
 }
 .book-cover {
+  min-height: 162px;
   height: 162px;
   max-width: 100%;
   min-width: 100%;
@@ -68,7 +70,8 @@
   box-shadow: 0 2px 5px 0 rgba(211, 209, 238, 0.5);
 }
 .book-card {
-  padding: 15px;
+  margin: 15px;
+  cursor: pointer;
 }
 .book-name {
   font-family: "Montserrat SemiBold";
